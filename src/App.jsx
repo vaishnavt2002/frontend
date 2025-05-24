@@ -52,7 +52,7 @@ function App() {
     };
     
     checkAuth();
-  }, [dispatch]); // Remove isAuthenticated from dependencies to prevent loops
+  }, [dispatch]); 
 
   if (loading || !authChecked) {
     return <Loading/>;
