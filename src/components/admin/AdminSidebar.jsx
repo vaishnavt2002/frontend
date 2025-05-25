@@ -17,7 +17,6 @@ const AdminSidebar = () => {
     { name: "Companies", path: "/admin/companies" },
     { name: "Verify Companies", path: "/admin/verify-companies" },
     { name: "Reports", path: "/admin/reports" },
-
   ];
 
   const handleLogout = async () => {
@@ -33,8 +32,8 @@ const AdminSidebar = () => {
 
   return (
     <>
-      {/* Mobile Top Bar */}
-      <div className="md:hidden flex justify-between items-center bg-white p-4 shadow-md">
+      {/* Mobile Top Bar - Hidden during print */}
+      <div className="md:hidden flex justify-between items-center bg-white p-4 shadow-md no-print">
         <button
           className="text-gray-600 text-xl"
           onClick={() => setIsOpen(!isOpen)}
@@ -43,9 +42,9 @@ const AdminSidebar = () => {
         </button>
       </div>
 
-      {/* Sidebar */}
+      {/* Sidebar - Hidden during print */}
       <div
-        className={`bg-white shadow-lg p-6 h-screen w-64 flex-col justify-between z-50 top-0 left-0 transform transition-transform duration-300 ease-in-out 
+        className={`bg-white shadow-lg p-6 h-screen w-64 flex-col justify-between z-50 top-0 left-0 transform transition-transform duration-300 ease-in-out no-print
         ${isOpen ? "translate-x-0" : "-translate-x-full"} 
         md:translate-x-0 md:fixed md:flex`}
       >
@@ -85,29 +84,16 @@ const AdminSidebar = () => {
         </div>
 
         {/* Admin Settings */}
-        <NavLink
-          to="/admin/settings"
-          onClick={() => setIsOpen(false)}
-          className={({ isActive }) =>
-            `flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium mt-6 ${
-              isActive
-                ? "bg-blue-500 text-white"
-                : "text-gray-600 hover:bg-blue-100"
-            }`
-          }
-        >
-          <FaCog />
-          Admin Settings
-        </NavLink>
+        
       </div>
 
-      {/* Placeholder for sidebar space on medium and larger screens */}
-      <div className="hidden md:block w-64 flex-shrink-0" />
+      {/* Placeholder for sidebar space on medium and larger screens - Hidden during print */}
+      <div className="hidden md:block w-64 flex-shrink-0 no-print" />
 
-      {/* Overlay for mobile */}
+      {/* Overlay for mobile - Hidden during print */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-40 z-40 md:hidden"
+          className="fixed inset-0 bg-black bg-opacity-40 z-40 md:hidden no-print"
           onClick={() => setIsOpen(false)}
         />
       )}

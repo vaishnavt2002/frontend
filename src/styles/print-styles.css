@@ -1,130 +1,97 @@
-/* Print styles for reports */
-
+/* Print styles */
 @media print {
-  /* Hide elements not needed for printing */
-  .no-print {
+  /* Hide elements that shouldn't be printed */
+  .no-print,
+  button,
+  .react-tabs__tab-list,
+  nav,
+  header,
+  footer {
     display: none !important;
   }
   
-  /* Show elements that should only appear in print */
+  /* Format the printable container */
   .print-container {
-    width: 100% !important;
-    max-width: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    margin: 0;
+    padding: 0.5cm;
+    width: 100%;
+    background-color: white !important;
+    color: black !important;
     box-shadow: none !important;
     border: none !important;
   }
   
-  /* Basic styling for printed pages */
+  /* Ensure charts and tables break nicely between pages */
+  table {
+    break-inside: auto;
+  }
+  
+  tr {
+    break-inside: avoid;
+    break-after: auto;
+  }
+  
+  /* Make content more printer-friendly */
   body {
     font-size: 12pt;
-    color: #000;
-    background: #fff;
+    background-color: white !important;
   }
   
-  /* Report titles */
-  .report-title {
-    margin-bottom: 1.5rem;
+  h1, h2, h3, h4 {
+    page-break-after: avoid;
   }
   
-  .report-title h1 {
-    font-size: 18pt;
-    font-weight: bold;
-    margin-bottom: 0.25rem;
+  /* Ensure background colors and borders print */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
   }
   
-  /* Page breaks */
+  /* Make grid layouts work better in print */
+  .grid {
+    display: block !important;
+  }
+  
+  .grid > div {
+    margin-bottom: 1cm;
+    page-break-inside: avoid;
+    width: 100% !important;
+  }
+  
+  /* Fix chart rendering in print */
+  canvas {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  
+  /* Add page break before specific sections */
   .page-break-before {
     page-break-before: always;
   }
   
-  .page-break-after {
+  /* Each report on a new page */
+  .report-component {
     page-break-after: always;
   }
   
-  /* Table styles for printing */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 1rem;
+  /* Hide tab panels that aren't selected */
+  .react-tabs__tab-panel:not(.react-tabs__tab-panel--selected) {
+    display: none !important;
   }
   
-  th, td {
-    border: 1px solid #ddd;
-    padding: 0.5rem;
+  /* Add report title at the top of each page */
+  .report-title {
+    text-align: center;
+    font-size: 18pt;
+    margin-bottom: 1cm;
   }
   
-  th {
-    background-color: #f1f1f1 !important;
-    font-weight: bold;
-  }
-  
-  /* Alternating row colors */
-  tr:nth-child(even) {
-    background-color: #f9f9f9 !important;
-  }
-  
-  /* Summary cards */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  /* Report section styling */
-  .report-component {
-    margin-bottom: 2rem;
-  }
-  
-  /* Report header */
-  .report-header {
-    margin-bottom: 2rem;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 1rem;
-  }
-  
-  /* Force background colors to print */
-  .bg-blue-50 {
-    background-color: #eff6ff !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-  
-  .bg-green-50 {
-    background-color: #f0fdf4 !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-  
-  .bg-yellow-50 {
-    background-color: #fefce8 !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-  
-  .bg-red-50 {
-    background-color: #fef2f2 !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-  
-  .bg-purple-50 {
-    background-color: #f5f3ff !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-  
-  .bg-gray-50 {
-    background-color: #f9fafb !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-  
-  /* Adjust border colors */
-  .border-blue-200, .border-green-200, .border-yellow-200, 
-  .border-red-200, .border-purple-200 {
-    border-color: #ddd !important;
+  /* Date stamp for the report */
+  .report-date {
+    text-align: right;
+    font-size: 10pt;
+    color: #666;
+    margin-bottom: 0.5cm;
   }
 }
