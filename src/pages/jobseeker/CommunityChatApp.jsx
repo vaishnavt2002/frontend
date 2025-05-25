@@ -7,7 +7,7 @@ import { debounce } from 'lodash';
 import Loading from '../../components/Loading';
 import dummyImage from '../../assets/dummy_profile.jpeg';
 
-const BASE_URL = 'http://127.0.0.1:8000';
+const BASE_URL = 'https://api.vaishnavt.in';
 
 // Notification Component
 const Notification = ({ message, type = 'info', onClose }) => {
