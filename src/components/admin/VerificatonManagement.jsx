@@ -129,7 +129,7 @@ const UnverifiedProviderCard = ({ jobProvider, onVerify }) => {
               {jobProvider.company_logo && (
                 <div className="mb-4">
                   <img 
-                    src={`${baseUrl}${jobProvider.company_logo}`}  
+                    src={`http://res.cloudinary.com/dkfic2cl6/${jobProvider.company_logo}`}  
                     alt={`${jobProvider.company_name} logo`} 
                     className="h-32 object-contain border rounded p-1 bg-white"
                   />
